@@ -11,18 +11,17 @@ The script relies on the powerfool exiftool command. See its [dedicated website]
 ## Script
 
 ```
-# Suffix used to identify edited files. Should be -edited for UK/US users.
+# Suffix used to identify edited files. Should be -edited for UK/US users as it depends on the lang.
 EDITED_FILE_SUFFIX="-modifié"
 
-echo Remove the "$EDITED_FILE_SUFFIX" suffix from the name of edited files and remove related unedited files
+echo Replace original files by their edited version
 for edited_file in *$EDITED_FILE_SUFFIX* ; do
     original_file=$(echo "$edited_file" | sed s/$EDITED_FILE_SUFFIX//g)
     rm "$original_file"
     mv -v "$edited_file" "./${original_file}"
 done
 
-# Bonus for mac users who wish to convert HEIC files
-echo Convert .HEIC to .jpeg
+echo Convert .HEIC to .jpeg for iphone/mac users
 for file in *.HEIC; do
     sips -s format jpeg "$file" --out "${file%.HEIC}.jpeg"
     mv -v "$file.json" "${file%.HEIC}.jpeg.json"
