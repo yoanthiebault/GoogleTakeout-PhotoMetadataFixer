@@ -10,8 +10,10 @@ The script relies on the powerfool exiftool command. See its [dedicated website]
 
 ## Script
 
-```
-# Suffix used to identify edited files. Should be -edited for UK/US users as it depends on the lang.
+Go into the directory containing your exported photos and run the following script.
+
+```sh
+# Suffix used to identify edited files. Should be -edited for UK/US users as it depends on the language.
 EDITED_FILE_SUFFIX="-modifié"
 
 echo Replace original files by their edited version
